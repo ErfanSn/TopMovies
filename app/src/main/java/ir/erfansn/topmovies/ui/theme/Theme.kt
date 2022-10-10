@@ -2,13 +2,10 @@ package ir.erfansn.topmovies.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorScheme = darkColorScheme()
 
@@ -26,6 +23,10 @@ fun TopMoviesTheme(
     } else {
         if (dynamicColor) dynamicLightColorScheme(context) else LightColorScheme
     }
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setNavigationBarColor(
+        color = colorScheme.surfaceColorAtElevation(NavigationBarDefaults.Elevation),
+    )
 
     MaterialTheme(
         colorScheme = colorScheme,
